@@ -2,6 +2,9 @@ export const USER_PROFILE_DESCRIPTION_MESSAGES = {
   UPDATE_CURRENT_USER_PROFILE_API: 'Rota de atualização de perfil de usuário.',
   UPDATE_CURRENT_USER_PROFILE_UPDATED: 'Perfil atualizado com sucesso.',
 
+  UPDATE_CURRENT_USER_AVATAR_API: 'Rota de atualização de avatar de usuário.',
+  UPDATE_CURRENT_USER_AVATAR_UPDATED: 'Avatar atualizado com sucesso.',
+
   DESCRIPTION: 'Descrição do usuário.',
   AVATAR_KEY: 'Caminho do avatar do usuário.',
 
