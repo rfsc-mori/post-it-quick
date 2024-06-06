@@ -10,4 +10,5 @@ export const USER_ERROR_MESSAGES = {
   USER_PASSWORD_TOO_SHORT: 'Senha de usuário muito curta.',
 
   USER_ALREADY_EXISTS: 'Um usuário com este email já existe.',
+  USER_NOT_FOUND: 'Usuário não encontrado.',
 } as const;
