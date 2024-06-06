@@ -51,12 +51,31 @@ model Post {
   title       String @db.VarChar(100)
   description String @db.Text
 
+  version Int @default(0)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   user          User           @relation(fields: [user_id], references: [id], onDelete: Cascade)
   post_reaction PostReaction[]
   comment       Comment[]
+  post_history  PostHistory[]
+}
+
+model PostHistory {
+  id String @id @default(uuid()) @db.Uuid()
+
+  post_id String @db.Uuid()
+
+  title       String @db.VarChar(100)
+  description String @db.Text
+
+  version Int @default(0)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  post Post @relation(fields: [post_id], references: [id], onDelete: Cascade)
 }
 
 model Comment {
