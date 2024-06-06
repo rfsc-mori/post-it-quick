@@ -12,6 +12,14 @@ export default registerAs('authentication', () => {
       format:
         /^(?=.*[a-z\u00E0-\u00FF])(?=.*[A-Z\u00C0-\u00DF])(?=.*\d)(?=.*[\s\W_]).{12,71}$/,
     },
+
+    access_token: {
+      secret:
+        process.env.ACCESS_TOKEN_SECRET || 'rM8Gvmup56326ESvp68NvvT9SsMDFX2x',
+      expires_in_seconds: Number(
+        process.env.ACCESS_TOKEN_EXPIRES_IN_SECONDS || 3600,
+      ),
+    },
   } as const;
 
   const authentication_config_schema = Joi.object({
@@ -31,6 +39,11 @@ export default registerAs('authentication', () => {
 
           return value;
         }),
+    }),
+
+    access_token: Joi.object({
+      secret: Joi.string().required(),
+      expires_in_seconds: Joi.number().required(),
     }),
   });
 
