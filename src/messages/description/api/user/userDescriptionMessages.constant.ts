@@ -5,6 +5,9 @@ export const USER_DESCRIPTION_MESSAGES = {
   DELETE_CURRENT_USER_API: 'Rota de exclusão de conta.',
   DELETE_CURRENT_USER_DELETED: 'Conta excluída com sucesso.',
 
+  UPDATE_CURRENT_USER_API: 'Rota de atualização de usuário.',
+  UPDATE_CURRENT_USER_UPDATED: 'Usuário atualizado com sucesso.',
+
   USER_NAME: 'Nome do usuário.',
   USER_EMAIL: 'Email do usuário.',
   USER_PASSWORD: 'Senha do usuário.',
