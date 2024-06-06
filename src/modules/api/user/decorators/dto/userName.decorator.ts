@@ -4,8 +4,12 @@ import { MaxLength, MinLength } from 'class-validator';
 import { USER_DESCRIPTION_MESSAGES } from 'messages/description/api/user/userDescriptionMessages.constant';
 import { USER_ERROR_MESSAGES } from 'messages/error/api/user/userErrorMessages.constant';
 
-export function userName(): PropertyDecorator {
+export function userName(
+  ...decorators: PropertyDecorator[]
+): PropertyDecorator {
   return applyDecorators(
+    ...decorators,
+
     MaxLength(100, { message: USER_ERROR_MESSAGES.USER_NAME_TOO_LONG }),
     MinLength(1, { message: USER_ERROR_MESSAGES.USER_NAME_TOO_SHORT }),
 
