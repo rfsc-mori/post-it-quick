@@ -25,6 +25,10 @@ export class UserRepository {
             password_hash: data.password_hash,
           },
         },
+
+        user_profile: {
+          create: {},
+        },
       },
       select: ID_SELECTOR,
     });
