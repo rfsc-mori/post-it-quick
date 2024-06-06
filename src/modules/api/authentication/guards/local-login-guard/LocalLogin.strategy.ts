@@ -30,6 +30,7 @@ export class LocalLoginStrategy extends PassportStrategy(Strategy) {
 
     return {
       id: user.id,
+      roles: user.roles,
     };
   }
 }

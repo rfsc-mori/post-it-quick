@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AUTHORIZATION_ROLE } from 'modules/api/authorization/constants/authorizationRole.constant';
 import type { TCreateUser } from 'modules/api/user/types/createUser.type';
 import type { TUser } from 'modules/api/user/types/user.type';
 import { PrismaService } from 'modules/database/Prisma.service';
@@ -15,6 +16,8 @@ export class UserRepository {
       data: {
         name: data.name,
         email: data.email,
+
+        roles: [AUTHORIZATION_ROLE.USER],
 
         user_credentials: {
           create: {
