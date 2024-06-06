@@ -21,7 +21,7 @@
 
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint"],
+      "extensions": ["dbaeumer.vscode-eslint", "Prisma.prisma"],
       "settings": {
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
