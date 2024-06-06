@@ -99,7 +99,7 @@ module.exports = {
       },
       {
         selector: 'objectLiteralMethod',
-        format: ['UPPER_CASE', 'snake_case'],
+        format: ['UPPER_CASE', 'snake_case', 'camelCase'],
       },
     ],
   },
