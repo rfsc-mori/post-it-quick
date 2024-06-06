@@ -16,9 +16,9 @@ export class DeleteUserService {
   async run(user: TRequestUser, target_id: string): Promise<void> {
     this.authorize(user, target_id);
 
-    const user_exists = await this.user_repository.findById(target_id);
+    const target_exists = !!(await this.user_repository.findById(target_id));
 
-    if (!user_exists) {
+    if (!target_exists) {
       throw new UserNotFoundException();
     }
 
