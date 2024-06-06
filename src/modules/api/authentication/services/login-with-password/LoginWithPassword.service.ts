@@ -40,6 +40,7 @@ export class LoginWithPasswordService {
 
     return {
       id: user.id,
+      roles: user.roles,
     };
   }
 }
