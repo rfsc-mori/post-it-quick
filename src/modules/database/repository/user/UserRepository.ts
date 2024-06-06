@@ -29,6 +29,15 @@ export class UserRepository {
     });
   }
 
+  async findById(id: string): Promise<TUser | null> {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+      select: USER_SELECTOR,
+    });
+
+    return user;
+  }
+
   async findByEmail(email: string): Promise<TUser | null> {
     const user = await this.prisma.user.findUnique({
       where: { email },
@@ -36,5 +45,12 @@ export class UserRepository {
     });
 
     return user;
+  }
+
+  async deleteById(id: string): Promise<void> {
+    await this.prisma.user.delete({
+      where: { id },
+      select: ID_SELECTOR,
+    });
   }
 }
