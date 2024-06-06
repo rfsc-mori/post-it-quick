@@ -5,4 +5,7 @@ export const AUTHENTICATION_ERROR_MESSAGES = {
   ACCESS_TOKEN_INVALID: 'Token de acesso inválido.',
 
   ACCESS_TOKEN_EXPIRED_OR_INVALID: 'Token de acesso expirado ou inválido.',
+
+  UNKNOWN_AUTHENTICATION_ERROR:
+    'Erro ao autenticar. Tente novamente mais tarde.',
 } as const;

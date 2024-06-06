@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { UnknownAuthenticationError } from 'exceptions/api/authentication/UnknownAuthenticationError.exception';
 import { Strategy } from 'passport-local';
@@ -8,6 +8,8 @@ import type { TRequestUser } from '../../types/requestUser.type';
 
 @Injectable()
 export class LocalLoginStrategy extends PassportStrategy(Strategy) {
+  private readonly logger = new Logger(LocalLoginStrategy.name);
+
   constructor(private readonly login_with_password: LoginWithPasswordService) {
     super({ usernameField: 'email' });
   }
@@ -17,7 +19,8 @@ export class LocalLoginStrategy extends PassportStrategy(Strategy) {
       if (err instanceof UnauthorizedException) {
         throw err;
       } else {
-        throw new UnknownAuthenticationError(err);
+        this.logger.error(err);
+        throw new UnknownAuthenticationError();
       }
     });
   }
