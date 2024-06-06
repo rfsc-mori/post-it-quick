@@ -1,4 +1,5 @@
 import { Get } from '@nestjs/common';
+import { accessTokenAuthenticationGuard } from 'modules/api/authentication/decorators/guards/accessTokenAuthenticationGuard.decorator';
 
 import { rootController } from '../../decorators/rootController.decorator';
 import { helloPlanet } from './decorators/helloPlanet.decorator';
@@ -10,6 +11,7 @@ export class HelloPlanetController {
 
   @Get()
   @helloPlanet()
+  @accessTokenAuthenticationGuard()
   async get(): Promise<string> {
     return await this.hello_planet.run();
   }
