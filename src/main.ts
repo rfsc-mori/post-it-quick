@@ -35,6 +35,7 @@ async function bootstrap(): Promise<void> {
         .setTitle(app_config.name)
         .setDescription(`${app_config.name} API`)
         .setVersion(app_config.version)
+        .addBearerAuth()
         .build(),
     ),
   );
