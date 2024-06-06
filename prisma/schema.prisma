@@ -26,6 +26,7 @@ model User {
   post             Post[]
   post_reaction    PostReaction[]
   comment          Comment[]
+  user_profile     UserProfile?
 }
 
 model UserCredentials {
@@ -91,4 +92,19 @@ model PostReaction {
 
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   post Post @relation(fields: [post_id], references: [id], onDelete: Cascade)
+}
+
+model UserProfile {
+  id String @id @default(uuid()) @db.Uuid()
+
+  user_id String @unique @db.Uuid()
+
+  description String? @db.Text
+
+  avatar_key String? @db.Text
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
