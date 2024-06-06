@@ -4,6 +4,7 @@ import { AuthenticationApiModule } from './authentication/AuthenticationApi.modu
 import { AuthorizationApiModule } from './authorization/AuthorizationApi.module';
 import { RootApiModule } from './root/RootApi.module';
 import { UserApiModule } from './user/UserApi.module';
+import { UserProfileApiModule } from './user-profile/UserProfileApi.module';
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { UserApiModule } from './user/UserApi.module';
     UserApiModule,
     AuthenticationApiModule,
     AuthorizationApiModule,
+    UserProfileApiModule,
   ],
 })
 export class ApiModule {}
