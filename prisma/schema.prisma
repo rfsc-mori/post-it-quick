@@ -27,6 +27,7 @@ model User {
   post_reaction    PostReaction[]
   comment          Comment[]
   user_profile     UserProfile?
+  deleted_comments Comment[]        @relation("deleter")
 }
 
 model UserCredentials {
@@ -91,8 +92,13 @@ model Comment {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
+  deleted_at DateTime?
+  deleted_by String?   @db.Uuid
+
   user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   post Post @relation(fields: [post_id], references: [id], onDelete: Cascade)
+
+  deleter User? @relation("deleter", fields: [deleted_by], references: [id])
 }
 
 enum ReactionType {
