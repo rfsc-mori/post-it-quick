@@ -17,6 +17,9 @@ export const POST_DESCRIPTION_MESSAGES = {
   FIND_ALL_POSTS_API: 'Rota de busca de todas as postagens.',
   FIND_ALL_POSTS_FOUND: 'Postagens encontradas com sucesso.',
 
+  FIND_POST_API: 'Rota de busca de postagem.',
+  FIND_POST_FOUND: 'Postagem encontrada com sucesso.',
+
   POST_ID: 'Identificador único da postagem.',
   POST_USER_ID: 'Identificador único do autor da postagem.',
   POST_TITLE: 'Título da postagem.',
