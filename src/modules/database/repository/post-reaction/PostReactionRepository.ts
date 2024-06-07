@@ -67,7 +67,8 @@ export class PostReactionRepository {
     };
 
     for (const raw_stat of raw_stats) {
-      by_reaction[raw_stat.reaction_type] = raw_stat._count.reaction_type;
+      by_reaction[raw_stat.reaction_type as TReactionType] =
+        raw_stat._count.reaction_type;
     }
 
     return {

@@ -62,8 +62,8 @@ export class PostRepository {
   }
 
   async findAllImageKeysForDeleting(user_id: string): Promise<string[]> {
-    return await this.prisma.post
-      .findMany({
+    const raw_image_keys: Pick<TPost, 'image_key'>[] =
+      await this.prisma.post.findMany({
         where: {
           user_id,
           image_key: {
@@ -73,11 +73,11 @@ export class PostRepository {
         select: {
           image_key: true,
         },
-      })
-      .then(
-        (posts) =>
-          posts.map((post) => post.image_key).filter(Boolean) as string[],
-      );
+      });
+
+    return raw_image_keys
+      .map((post) => post.image_key)
+      .filter(Boolean) as string[];
   }
 
   async delete(post_id: string): Promise<void> {
