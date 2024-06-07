@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: ${DATABASE_USER:-application}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-9ia6QDzoCzcbpwRnu5qyrKyzKcxfiMpP}
     ports:
-      - ${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}
+      - 5432:5432
     volumes:
       - db-data:/var/lib/postgresql/data
 
