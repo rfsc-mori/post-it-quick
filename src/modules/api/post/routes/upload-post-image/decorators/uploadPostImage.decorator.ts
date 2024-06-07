@@ -7,6 +7,7 @@ import {
 import { POST_DESCRIPTION_MESSAGES } from 'messages/description/api/post/postDescriptionMessages.constant';
 import { IMAGE_ERROR_MESSAGES } from 'messages/error/image/imageErrorMessages.constant';
 import { apiWithBodyValidator } from 'modules/api/decorators/apiWithBodyValidator.decorator';
+import { PostWithImageUrlDto } from 'modules/api/post/dto/PostWithImageUrl.dto';
 
 export function uploadPostImage(): MethodDecorator {
   return applyDecorators(
@@ -22,6 +23,7 @@ export function uploadPostImage(): MethodDecorator {
 
     ApiCreatedResponse({
       description: POST_DESCRIPTION_MESSAGES.UPLOAD_POST_IMAGE_UPDATED,
+      type: PostWithImageUrlDto,
     }),
   );
 }
