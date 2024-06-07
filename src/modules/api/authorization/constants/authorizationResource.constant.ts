@@ -2,4 +2,5 @@ export const AUTHORIZATION_RESOURCE = {
   USER: 'USER',
   PROFILE: 'PROFILE',
   POST: 'POST',
+  POST_REACTION: 'POST_REACTION',
 } as const;
