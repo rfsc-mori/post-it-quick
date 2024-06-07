@@ -10,6 +10,12 @@ export const USER_DESCRIPTION_MESSAGES = {
   UPDATE_CURRENT_USER_API: 'Rota de atualização de usuário.',
   UPDATE_CURRENT_USER_UPDATED: 'Usuário atualizado com sucesso.',
 
+  FIND_CURRENT_USER_API: 'Rota de busca de usuário.',
+  FIND_CURRENT_USER_FOUND: 'Usuário encontrado com sucesso.',
+
+  FIND_USER_API: 'Rota de busca de usuário.',
+  FIND_USER_FOUND: 'Usuário encontrado com sucesso.',
+
   USER_ID: 'Identificador único do usuário.',
   USER_NAME: 'Nome do usuário.',
   USER_EMAIL: 'Email do usuário.',
