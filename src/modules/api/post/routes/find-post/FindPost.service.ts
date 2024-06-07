@@ -19,13 +19,21 @@ export class FindPostService {
       throw new PostNotFoundException();
     }
 
+    // Uma solução ideal trabalha em conjunto com o front-end ou com ferramentas
+    // de analytics para realizar a contagem de visualizações, mas por
+    // simplicidade a contagem é feita diretamente após um GET, que não deveria
+    // alterar o estado da postagem nem de outras entidades, desconsiderando
+    // ainda também os acessos não contabilizados por motivos de cache.
+    const views = await this.post_repository.incrementViews(target_id);
+
     const image_url = post.image_key
       ? this.s3.makePublicURL(post.image_key)
       : null;
 
     return {
       ...post,
-      image_url: image_url,
+      views,
+      image_url,
     };
   }
 }

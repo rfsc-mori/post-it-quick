@@ -6,6 +6,7 @@ import { postTitle } from '../decorators/dto/postTitle.decorator';
 import { postUpdatedAt } from '../decorators/dto/postUpdatedAt.decorator';
 import { postUserId } from '../decorators/dto/postUserId.decorator';
 import { postVersion } from '../decorators/dto/postVersion.decorator';
+import { postViews } from '../decorators/dto/postViews.decorator';
 import type { TPost } from '../types/post.type';
 
 export class PostDto implements TPost {
@@ -26,6 +27,9 @@ export class PostDto implements TPost {
 
   @postImageKey()
   readonly image_key: string | null;
+
+  @postViews()
+  readonly views: number;
 
   @postCreatedAt()
   readonly created_at: Date;

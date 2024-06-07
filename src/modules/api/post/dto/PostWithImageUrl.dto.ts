@@ -7,6 +7,7 @@ import { postTitle } from '../decorators/dto/postTitle.decorator';
 import { postUpdatedAt } from '../decorators/dto/postUpdatedAt.decorator';
 import { postUserId } from '../decorators/dto/postUserId.decorator';
 import { postVersion } from '../decorators/dto/postVersion.decorator';
+import { postViews } from '../decorators/dto/postViews.decorator';
 import type { TPostWithImageUrl } from '../types/postWithImageUrl.type';
 
 export class PostWithImageUrlDto implements TPostWithImageUrl {
@@ -27,6 +28,9 @@ export class PostWithImageUrlDto implements TPostWithImageUrl {
 
   @postImageKey()
   readonly image_key: string | null;
+
+  @postViews()
+  readonly views: number;
 
   @postCreatedAt()
   readonly created_at: Date;
