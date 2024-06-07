@@ -4,6 +4,7 @@ import type { TPost } from 'modules/api/post/types/post.type';
 import type { TPostForListing } from 'modules/api/post/types/postForListing.type';
 import type { TUpdatePost } from 'modules/api/post/types/updatePost.type';
 import { PrismaService } from 'modules/database/Prisma.service';
+import { POST_FOR_LISTING_SELECTOR } from 'modules/database/selector/post/postForListingSelector';
 
 import { ID_SELECTOR } from '../../selector/idSelector';
 import { POST_SELECTOR } from '../../selector/post/postSelector';
@@ -54,24 +55,10 @@ export class PostRepository {
   }
 
   async findAllForListing(user_id?: string): Promise<TPostForListing[]> {
-    const raw_post_list = await this.prisma.post.findMany({
-      where: {
-        user: {
-          id: user_id,
-        },
-      },
-      select: {
-        id: true,
-        user_id: true,
-        title: true,
-      },
+    return await this.prisma.post.findMany({
+      where: { user: { id: user_id } },
+      select: POST_FOR_LISTING_SELECTOR,
     });
-
-    return raw_post_list.map((post) => ({
-      id: post.id,
-      user_id: post.user_id,
-      title: post.title,
-    }));
   }
 
   async findAllImageKeysForDeleting(user_id: string): Promise<string[]> {
