@@ -106,4 +106,14 @@ export class PostRepository {
       select: ID_SELECTOR,
     });
   }
+
+  async incrementViews(post_id: string): Promise<number> {
+    const raw_views = await this.prisma.post.update({
+      where: { id: post_id },
+      data: { views: { increment: 1 } },
+      select: { views: true },
+    });
+
+    return raw_views.views;
+  }
 }

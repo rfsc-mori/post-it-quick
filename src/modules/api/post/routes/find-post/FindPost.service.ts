@@ -19,13 +19,16 @@ export class FindPostService {
       throw new PostNotFoundException();
     }
 
+    const views = await this.post_repository.incrementViews(target_id);
+
     const image_url = post.image_key
       ? this.s3.makePublicURL(post.image_key)
       : null;
 
     return {
       ...post,
-      image_url: image_url,
+      views,
+      image_url,
     };
   }
 }
