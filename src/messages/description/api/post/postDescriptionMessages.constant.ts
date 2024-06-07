@@ -5,6 +5,9 @@ export const POST_DESCRIPTION_MESSAGES = {
   DELETE_POST_API: 'Rota de exclusão de postagem.',
   DELETE_POST_DELETED: 'Postagem excluída com sucesso.',
 
+  UPDATE_POST_API: 'Rota de edição de postagem.',
+  UPDATE_POST_UPDATED: 'Postagem editada com sucesso.',
+
   POST_ID: 'Identificador único da postagem.',
   POST_USER_ID: 'Identificador único do autor da postagem.',
   POST_TITLE: 'Título da postagem.',
