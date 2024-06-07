@@ -5,8 +5,8 @@ import type { TUpdateUser } from 'modules/api/user/types/updateUser.type';
 import type { TUser } from 'modules/api/user/types/user.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
-import { ID_SELECTOR } from '../selector/idSelector';
-import { USER_SELECTOR } from '../selector/user/userSelector';
+import { ID_SELECTOR } from '../../selector/idSelector';
+import { USER_SELECTOR } from '../../selector/user/userSelector';
 
 @Injectable()
 export class UserRepository {

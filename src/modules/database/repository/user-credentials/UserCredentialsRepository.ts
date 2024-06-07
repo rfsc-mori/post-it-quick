@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import type { TUserCredentials } from 'modules/api/user-credentials/types/userCredentials.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
-import { USER_CREDENTIALS_SELECTOR } from '../selector/user-credentials/userCredentialsSelector';
+import { USER_CREDENTIALS_SELECTOR } from '../../selector/user-credentials/userCredentialsSelector';
 
 @Injectable()
 export class UserCredentialsRepository {
