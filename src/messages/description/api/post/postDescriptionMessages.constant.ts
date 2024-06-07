@@ -14,6 +14,9 @@ export const POST_DESCRIPTION_MESSAGES = {
   DELETE_POST_IMAGE_API: 'Rota de exclusão de imagem de postagem.',
   DELETE_POST_IMAGE_UPDATED: 'Imagem de postagem excluída com sucesso.',
 
+  FIND_ALL_POSTS_API: 'Rota de busca de todas as postagens.',
+  FIND_ALL_POSTS_FOUND: 'Postagens encontradas com sucesso.',
+
   POST_ID: 'Identificador único da postagem.',
   POST_USER_ID: 'Identificador único do autor da postagem.',
   POST_TITLE: 'Título da postagem.',

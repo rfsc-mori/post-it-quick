@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { TCreatePost } from 'modules/api/post/types/createPost.type';
 import type { TPost } from 'modules/api/post/types/post.type';
+import type { TPostForListing } from 'modules/api/post/types/postForListing.type';
 import type { TUpdatePost } from 'modules/api/post/types/updatePost.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
@@ -50,6 +51,27 @@ export class PostRepository {
       where: { id: post_id },
       select: POST_SELECTOR,
     });
+  }
+
+  async findAllForListing(user_id?: string): Promise<TPostForListing[]> {
+    const raw_post_list = await this.prisma.post.findMany({
+      where: {
+        user: {
+          id: user_id,
+        },
+      },
+      select: {
+        id: true,
+        user_id: true,
+        title: true,
+      },
+    });
+
+    return raw_post_list.map((post) => ({
+      id: post.id,
+      user_id: post.user_id,
+      title: post.title,
+    }));
   }
 
   async delete(post_id: string): Promise<void> {
