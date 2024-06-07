@@ -1,7 +1,6 @@
 import { Delete, HttpCode, HttpStatus, Req } from '@nestjs/common';
 import { TAuthenticatedRequest } from 'modules/api/authentication/types/authenticatedRequest.type';
-import { AUTHORIZATION_RESOURCE } from 'modules/api/authorization/constants/authorizationResource.constant';
-import { authorize } from 'modules/api/authorization/decorators/authorize.decorator';
+import { accessTokenWithAuthorization } from 'modules/api/authorization/decorators/accessTokenWithAuthorization.decorator';
 
 import { userProfileController } from '../../decorators/userProfileController.decorator';
 import { deleteAvatar } from './decorators/deleteAvatar.decorator';
@@ -14,11 +13,7 @@ export class DeleteAvatarController {
   @Delete('avatar')
   @deleteAvatar()
   @HttpCode(HttpStatus.NO_CONTENT)
-  @authorize({
-    resource: AUTHORIZATION_RESOURCE.PROFILE,
-    action: 'update',
-    possession: 'own',
-  })
+  @accessTokenWithAuthorization()
   async post(@Req() { user }: TAuthenticatedRequest): Promise<void> {
     return await this.delete_avatar.run(user);
   }
