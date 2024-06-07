@@ -10,6 +10,7 @@ import { PostImageProcessor } from 'modules/image/processor/post-image/PostImage
 import { S3Service } from 'modules/s3/S3.service';
 
 import type { TPost } from '../../types/post.type';
+import type { TPostWithImageUrl } from '../../types/postWithImageUrl.type';
 
 @Injectable()
 export class UploadPostImageService {
@@ -26,7 +27,7 @@ export class UploadPostImageService {
     user: TRequestUser,
     target_id: string,
     image?: Express.Multer.File,
-  ): Promise<void> {
+  ): Promise<TPostWithImageUrl> {
     if (!image) {
       throw new EmptyPostImageUploadException();
     }
@@ -52,6 +53,12 @@ export class UploadPostImageService {
     await this.post_repository.update(post.id, {
       image_key: key,
     });
+
+    return {
+      ...post,
+      image_key: key,
+      image_url: this.s3.makePublicURL(key),
+    };
   }
 
   private authorize(user: TRequestUser, target: TPost): void {
