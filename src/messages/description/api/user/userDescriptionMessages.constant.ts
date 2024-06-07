@@ -15,6 +15,6 @@ export const USER_DESCRIPTION_MESSAGES = {
 
   EXAMPLE_USER_ID: '391d68f6-9f2b-4e78-82c7-160b896f7963',
   EXAMPLE_USER_NAME: 'John Doe',
-  EXAMPLE_USER_EMAIL: 'john.doe@this.localhost',
+  EXAMPLE_USER_EMAIL: 'john.doe@example.com',
   EXAMPLE_USER_PASSWORD: 'JohnDoe123!@#',
 } as const;
