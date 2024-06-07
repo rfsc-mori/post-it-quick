@@ -1,7 +1,6 @@
 import { Delete, HttpCode, HttpStatus, Param, Req } from '@nestjs/common';
 import { TAuthenticatedRequest } from 'modules/api/authentication/types/authenticatedRequest.type';
-import { AUTHORIZATION_RESOURCE } from 'modules/api/authorization/constants/authorizationResource.constant';
-import { authorize } from 'modules/api/authorization/decorators/authorize.decorator';
+import { accessTokenWithAuthorization } from 'modules/api/authorization/decorators/accessTokenWithAuthorization.decorator';
 
 import { postController } from '../../decorators/postController.decorator';
 import { PostIdParamDto } from '../../dto/param/PostIdParam.dto';
@@ -15,11 +14,7 @@ export class DeletePostImageController {
   @Delete(':post_id/image')
   @deletePostImage()
   @HttpCode(HttpStatus.NO_CONTENT)
-  @authorize({
-    resource: AUTHORIZATION_RESOURCE.POST,
-    action: 'update',
-    possession: 'own',
-  })
+  @accessTokenWithAuthorization()
   async post(
     @Req() { user }: TAuthenticatedRequest,
     @Param() { post_id: target_id }: PostIdParamDto,
