@@ -1,6 +1,7 @@
 import { postCreatedAt } from '../decorators/dto/postCreatedAt.decorator';
 import { postDescription } from '../decorators/dto/postDescription.decorator';
 import { postId } from '../decorators/dto/postId.decorator';
+import { postImageKey } from '../decorators/dto/postImageKey.decorator';
 import { postTitle } from '../decorators/dto/postTitle.decorator';
 import { postUpdatedAt } from '../decorators/dto/postUpdatedAt.decorator';
 import { postUserId } from '../decorators/dto/postUserId.decorator';
@@ -22,6 +23,9 @@ export class PostDto implements TPost {
 
   @postVersion()
   readonly version: number;
+
+  @postImageKey()
+  readonly image_key: string | null;
 
   @postCreatedAt()
   readonly created_at: Date;

@@ -8,6 +8,8 @@ export type TPost = {
 
   readonly version: number;
 
+  readonly image_key: string | null;
+
   readonly created_at: Date;
   readonly updated_at: Date;
 };

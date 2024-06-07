@@ -8,4 +8,6 @@ export const POST_ERROR_MESSAGES = {
     'A descrição do post não pode ter mais de 1000 caracteres.',
 
   POST_NOT_FOUND: 'Postagem não encontrada.',
+
+  EMPTY_POST_IMAGE_UPLOAD: 'Nenhuma imagem foi enviada.',
 } as const;

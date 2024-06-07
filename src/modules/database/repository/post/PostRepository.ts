@@ -70,4 +70,15 @@ export class PostRepository {
       select: ID_SELECTOR,
     });
   }
+
+  async updateImageKey(
+    post_id: string,
+    image_key: string | null,
+  ): Promise<void> {
+    await this.prisma.post.update({
+      where: { id: post_id },
+      data: { image_key },
+      select: ID_SELECTOR,
+    });
+  }
 }
