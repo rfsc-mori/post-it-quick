@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   db:
-    image: postgres
+    image: postgres@sha256:1bf73ccae25238fa555100080042f0b2f9be08eb757e200fe6afc1fc413a1b3c
     restart: 'no'
     environment:
       POSTGRES_DB: ${DATABASE_DB:-postitquick}
@@ -13,5 +13,20 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
 
+  minio:
+    image: minio/minio@sha256:c97dbb0238dbd650ebe3f57dda68984993f466abad70d36c6e3ca306ceec3f58
+    restart: 'no'
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:-8Bki8kMM8A6xJjvwHAb8KPAKERaXFA8m}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:-GN24bJw2qbho3Sn828NrbAUjQC9LS9df}
+      MINIO_DEFAULT_BUCKETS: ${S3_BUCKET_NAME:-postitquick}
+    command: server /data --console-address ":9001"
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - minio-data:/data
+
 volumes:
   db-data:
+  minio-data:
