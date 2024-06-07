@@ -35,8 +35,6 @@ export default registerAs('email', () => {
     }).required(),
   });
 
-  console.log(mail_config);
-
   validateConfigWithSchema(mail_config, mail_config_schema);
 
   return mail_config;
