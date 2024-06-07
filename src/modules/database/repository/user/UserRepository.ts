@@ -12,8 +12,8 @@ import { USER_SELECTOR } from '../../selector/user/userSelector';
 export class UserRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(data: TCreateUser): Promise<void> {
-    await this.prisma.user.create({
+  async create(data: TCreateUser): Promise<TUser> {
+    return await this.prisma.user.create({
       data: {
         name: data.name,
         email: data.email,
@@ -30,7 +30,7 @@ export class UserRepository {
           create: {},
         },
       },
-      select: ID_SELECTOR,
+      select: USER_SELECTOR,
     });
   }
 
