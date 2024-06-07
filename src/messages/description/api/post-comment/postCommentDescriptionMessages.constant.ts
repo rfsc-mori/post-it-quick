@@ -5,6 +5,9 @@ export const POST_COMMENT_DESCRIPTION_MESSAGES = {
   UPDATE_POST_COMMENT_API: 'Atualiza um comentário de uma postagem.',
   UPDATE_POST_COMMENT_CREATED: 'Comentário atualizado com sucesso.',
 
+  DELETE_POST_COMMENT_API: 'Deleta um comentário de uma postagem.',
+  DELETE_POST_COMMENT_CREATED: 'Comentário deletado com sucesso.',
+
   POST_COMMENT_ID: 'Identificador único do comentário.',
   POST_COMMENT_USER_ID: 'Identificador único do autor do comentário.',
   POST_COMMENT_DESCRIPTION: 'Descrição do comentário.',

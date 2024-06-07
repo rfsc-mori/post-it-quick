@@ -3,6 +3,7 @@ import type { TCreatePostComment } from 'modules/api/post-comment/types/createPo
 import type { TPostComment } from 'modules/api/post-comment/types/postComment.type';
 import type { TUpdatePostComment } from 'modules/api/post-comment/types/updatePostComment.type';
 import { PrismaService } from 'modules/database/Prisma.service';
+import { ID_SELECTOR } from 'modules/database/selector/idSelector';
 import { POST_COMMENT_SELECTOR } from 'modules/database/selector/post-comment/postCommentSelector';
 
 @Injectable()
@@ -36,16 +37,40 @@ export class PostCommentRepository {
 
   async findById(id: string): Promise<TPostComment | null> {
     return await this.prisma.comment.findUnique({
-      where: { id },
+      where: {
+        id,
+        deleted_at: null,
+      },
       select: POST_COMMENT_SELECTOR,
     });
   }
 
   async update(id: string, data: TUpdatePostComment): Promise<TPostComment> {
     return await this.prisma.comment.update({
-      where: { id },
+      where: {
+        id,
+        deleted_at: null,
+      },
       data: { description: data.description },
       select: POST_COMMENT_SELECTOR,
+    });
+  }
+
+  async softDelete(comment_id: string, user_id: string): Promise<void> {
+    await this.prisma.comment.update({
+      where: {
+        id: comment_id,
+      },
+      data: {
+        deleted_at: new Date(),
+
+        deleter: {
+          connect: {
+            id: user_id,
+          },
+        },
+      },
+      select: ID_SELECTOR,
     });
   }
 }
