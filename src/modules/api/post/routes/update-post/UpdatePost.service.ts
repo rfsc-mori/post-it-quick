@@ -35,6 +35,8 @@ export class UpdatePostService {
       title: data.title,
       description: data.description,
     });
+
+    await this.post_repository.incrementVersion(target_id);
   }
 
   private authorize(user: TRequestUser, target: TPost): void {

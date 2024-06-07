@@ -71,6 +71,14 @@ export class PostRepository {
     });
   }
 
+  async incrementVersion(post_id: string): Promise<void> {
+    await this.prisma.post.update({
+      where: { id: post_id },
+      data: { version: { increment: 1 } },
+      select: ID_SELECTOR,
+    });
+  }
+
   async updateImageKey(
     post_id: string,
     image_key: string | null,
