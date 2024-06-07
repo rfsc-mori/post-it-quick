@@ -12,6 +12,7 @@ export function findAllPosts(): MethodDecorator {
     ApiOkResponse({
       description: POST_DESCRIPTION_MESSAGES.FIND_ALL_POSTS_FOUND,
       type: PostForListingWithStatsDto,
+      isArray: true,
     }),
   );
 }
