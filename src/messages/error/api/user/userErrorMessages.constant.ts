@@ -1,4 +1,6 @@
 export const USER_ERROR_MESSAGES = {
+  USER_ID_INVALID: 'Identificador único de usuário inválido.',
+
   USER_NAME_TOO_LONG: 'Nome de usuário muito longo.',
   USER_NAME_TOO_SHORT: 'Nome de usuário muito curto.',
 
