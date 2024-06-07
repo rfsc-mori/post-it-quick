@@ -32,6 +32,7 @@ RUN npm ci --omit=dev
 
 FROM production AS dependencies
 COPY prisma prisma
+COPY 3rd-party 3rd-party
 COPY docker-entrypoint.sh docker-entrypoint.sh
 
 FROM base AS release
@@ -44,11 +45,12 @@ COPY --from=build /usr/src/postitquick/package.json package.json
 COPY --from=dependencies /usr/src/postitquick/prisma ./
 
 COPY --from=dependencies /usr/src/postitquick/docker-entrypoint.sh docker-entrypoint.sh
-COPY --from=build /usr/src/postitquick/docker-entrypoint.sh docker-entrypoint.sh
+COPY --from=dependencies /usr/src/postitquick/3rd-party/wait-for-it.sh wait-for-it.sh
 
 USER root
 
 RUN chmod +x docker-entrypoint.sh
+RUN chmod +x wait-for-it.sh
 
 USER postitquick
 
