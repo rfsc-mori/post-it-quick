@@ -35,5 +35,5 @@ export class PostWithImageUrlDto implements TPostWithImageUrl {
   readonly updated_at: Date;
 
   @postImageURL()
-  readonly image_url: URL;
+  readonly image_url?: URL | null;
 }
