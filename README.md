@@ -59,6 +59,8 @@ Você pode encontrar os pacotes utilizados no arquivo [package.json](package.jso
 - Sharp: Para redimensionamento de imagens.
 - EsLint/Prettier: Para padronização de código.
 
+Adicionalmente, utilizei o script `wait-for-it.sh` para aguardar a inicialização do banco de dados. Disponível no repositório: [https://github.com/vishnubob/wait-for-it](https://github.com/vishnubob/wait-for-it).
+
 ## 3. A Aplicação
 
 Este projeto utiliza as portas 3000, 5432, 9000, 9001, 1025 e 8025. Certifique-se de que essas portas estão disponíveis em seu ambiente.
