@@ -6,6 +6,7 @@ import { PasswordHasher } from 'utils/api/authentication/password-hasher/Passwor
 import { PasswordValidator } from 'utils/api/authentication/password-validator/PasswordValidator';
 
 import type { TCreateUserPlainPassword } from '../../types/createUserPlainPassword.type';
+import type { TUser } from '../../types/user.type';
 
 @Injectable()
 export class CreateUserService {
@@ -15,7 +16,7 @@ export class CreateUserService {
     private readonly password_hasher: PasswordHasher,
   ) {}
 
-  async run(data: TCreateUserPlainPassword): Promise<void> {
+  async run(data: TCreateUserPlainPassword): Promise<TUser> {
     if (!this.password_validator.isValid(data.password)) {
       throw new InvalidPasswordFormatException();
     }
@@ -28,7 +29,7 @@ export class CreateUserService {
 
     const password_hash = await this.password_hasher.hash(data.password);
 
-    await this.user_repository.create({
+    return await this.user_repository.create({
       name: data.name,
       email: data.email,
       password_hash,
