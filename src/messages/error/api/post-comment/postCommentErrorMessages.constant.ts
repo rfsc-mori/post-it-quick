@@ -3,4 +3,6 @@ export const POST_COMMENT_ERROR_MESSAGES = {
 
   POST_COMMENT_DESCRIPTION_TOO_LONG:
     'O comentário da postagem não pode ter mais de 1000 caracteres.',
+
+  POST_COMMENT_NOT_FOUND: 'Comentário da postagem não encontrado.',
 } as const;
