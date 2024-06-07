@@ -11,6 +11,9 @@ export const POST_DESCRIPTION_MESSAGES = {
   UPLOAD_POST_IMAGE_API: 'Rota de upload de imagem de postagem.',
   UPLOAD_POST_IMAGE_UPDATED: 'Imagem de postagem atualizada com sucesso.',
 
+  DELETE_POST_IMAGE_API: 'Rota de exclusão de imagem de postagem.',
+  DELETE_POST_IMAGE_UPDATED: 'Imagem de postagem excluída com sucesso.',
+
   POST_ID: 'Identificador único da postagem.',
   POST_USER_ID: 'Identificador único do autor da postagem.',
   POST_TITLE: 'Título da postagem.',
