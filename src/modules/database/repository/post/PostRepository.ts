@@ -4,8 +4,8 @@ import type { TPost } from 'modules/api/post/types/post.type';
 import type { TUpdatePost } from 'modules/api/post/types/updatePost.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
-import { ID_SELECTOR } from '../selector/idSelector';
-import { POST_SELECTOR } from '../selector/post/postSelector';
+import { ID_SELECTOR } from '../../selector/idSelector';
+import { POST_SELECTOR } from '../../selector/post/postSelector';
 
 @Injectable()
 export class PostRepository {

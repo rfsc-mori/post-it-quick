@@ -3,8 +3,8 @@ import type { TUpdateUserProfile } from 'modules/api/user-profile/types/updateUs
 import type { TUserProfile } from 'modules/api/user-profile/types/userProfile.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
-import { ID_SELECTOR } from '../selector/idSelector';
-import { USER_PROFILE_SELECTOR } from '../selector/user-profile/userProfileSelector';
+import { ID_SELECTOR } from '../../selector/idSelector';
+import { USER_PROFILE_SELECTOR } from '../../selector/user-profile/userProfileSelector';
 
 @Injectable()
 export class UserProfileRepository {
