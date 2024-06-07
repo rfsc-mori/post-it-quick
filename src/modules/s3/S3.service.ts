@@ -64,6 +64,28 @@ export class S3Service implements OnModuleInit {
     return key;
   }
 
+  async uploadPostImage(user_id: string, buffer: Buffer): Promise<string> {
+    const key = `post/${user_id}/${crypto.randomBytes(16).toString('hex')}.jpeg`;
+
+    const uploader = new Upload({
+      client: this.client,
+      params: {
+        Bucket: this.config.server.bucket,
+        Key: key,
+        ACL: 'public-read',
+        Body: buffer,
+        ContentType: 'image/jpeg',
+      },
+    });
+
+    await uploader.done().catch((error: Error) => {
+      this.logger.error(error);
+      throw new S3UploadError();
+    });
+
+    return key;
+  }
+
   async deleteByKey(key: string): Promise<void> {
     await this.client
       .send(
