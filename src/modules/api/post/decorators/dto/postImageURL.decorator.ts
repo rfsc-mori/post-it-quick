@@ -7,6 +7,7 @@ export function postImageURL(): PropertyDecorator {
     ApiProperty({
       description: POST_DESCRIPTION_MESSAGES.POST_IMAGE_URL,
       example: POST_DESCRIPTION_MESSAGES.EXAMPLE_POST_IMAGE_URL,
+      type: String,
     }),
   );
 }

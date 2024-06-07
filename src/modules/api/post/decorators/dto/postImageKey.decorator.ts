@@ -5,8 +5,8 @@ import { POST_DESCRIPTION_MESSAGES } from 'messages/description/api/post/postDes
 export function postImageKey(): PropertyDecorator {
   return applyDecorators(
     ApiProperty({
-      description: POST_DESCRIPTION_MESSAGES.POST_ID,
-      example: POST_DESCRIPTION_MESSAGES.EXAMPLE_POST_ID,
+      description: POST_DESCRIPTION_MESSAGES.POST_IMAGE_KEY,
+      example: POST_DESCRIPTION_MESSAGES.EXAMPLE_POST_IMAGE_KEY,
     }),
   );
 }
