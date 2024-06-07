@@ -4,6 +4,7 @@ import { UserNotFoundException } from 'exceptions/api/user/UserNotFound.exceptio
 import type { TRequestUser } from 'modules/api/authentication/types/requestUser.type';
 import { AuthorizationGrant } from 'modules/api/authorization/constants/authorizationGrant.constant';
 import { AUTHORIZATION_RESOURCE } from 'modules/api/authorization/constants/authorizationResource.constant';
+import { PostRepository } from 'modules/database/repository/post/PostRepository';
 import { UserRepository } from 'modules/database/repository/user/UserRepository';
 import { UserProfileRepository } from 'modules/database/repository/user-profile/UserProfileRepository';
 import { S3Service } from 'modules/s3/S3.service';
@@ -17,6 +18,7 @@ export class DeleteUserService {
     private readonly user_repository: UserRepository,
     private readonly s3: S3Service,
     private readonly user_profile_repository: UserProfileRepository,
+    private readonly post_repository: PostRepository,
   ) {}
 
   async run(user: TRequestUser, target_id: string): Promise<void> {
@@ -35,6 +37,13 @@ export class DeleteUserService {
         this.logger.error(error);
       });
     }
+
+    const all_post_image_keys =
+      await this.post_repository.findAllImageKeysForDeleting(user.id);
+
+    await this.s3.deleteBatch(all_post_image_keys).catch((error: Error) => {
+      this.logger.error(error);
+    });
 
     await this.user_repository.deleteById(target_id);
   }

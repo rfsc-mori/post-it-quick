@@ -74,6 +74,25 @@ export class PostRepository {
     }));
   }
 
+  async findAllImageKeysForDeleting(user_id: string): Promise<string[]> {
+    return await this.prisma.post
+      .findMany({
+        where: {
+          user_id,
+          image_key: {
+            not: null,
+          },
+        },
+        select: {
+          image_key: true,
+        },
+      })
+      .then(
+        (posts) =>
+          posts.map((post) => post.image_key).filter(Boolean) as string[],
+      );
+  }
+
   async delete(post_id: string): Promise<void> {
     await this.prisma.post.delete({
       where: { id: post_id },

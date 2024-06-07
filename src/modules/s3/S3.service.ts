@@ -1,6 +1,7 @@
 import {
   CreateBucketCommand,
   DeleteObjectCommand,
+  DeleteObjectsCommand,
   HeadBucketCommand,
   NotFound,
   PutBucketPolicyCommand,
@@ -98,6 +99,30 @@ export class S3Service implements OnModuleInit {
         this.logger.error(error);
         throw new S3DeleteError();
       });
+  }
+
+  async deleteBatch(keys: string[]): Promise<void> {
+    const groups: string[][] = [];
+
+    for (let i = 0; i < keys.length; i += 1000) {
+      groups.push(keys.slice(i, i + 1000));
+    }
+
+    for (const group of groups) {
+      await this.client
+        .send(
+          new DeleteObjectsCommand({
+            Bucket: this.config.server.bucket,
+            Delete: {
+              Objects: group.map((key) => ({ Key: key })),
+            },
+          }),
+        )
+        .catch((error: Error) => {
+          this.logger.error(error);
+          throw new S3DeleteError();
+        });
+    }
   }
 
   makePublicURL(key: string): URL {
