@@ -5,6 +5,7 @@ export const POST_SELECTOR = {
   description: true,
   version: true,
   image_key: true,
+  views: true,
   created_at: true,
   updated_at: true,
 } as const;

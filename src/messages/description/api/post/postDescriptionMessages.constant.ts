@@ -29,6 +29,7 @@ export const POST_DESCRIPTION_MESSAGES = {
   POST_CREATED_AT: 'Data de criação da postagem.',
   POST_UPDATED_AT: 'Data de atualização da postagem.',
   POST_IMAGE_URL: 'URL da imagem da postagem.',
+  POST_VIEWS: 'Visualizações da postagem.',
   POST_COMMENTS: 'Comentários da postagem.',
   POST_LIKES: 'Curtidas da postagem.',
   POST_DISLIKES: 'Não-curtidas da postagem.',
@@ -44,6 +45,7 @@ export const POST_DESCRIPTION_MESSAGES = {
   EXAMPLE_POST_UPDATED_AT: '2024-06-06T12:00:00.000Z',
   EXAMPLE_POST_IMAGE_URL:
     'http://localhost:9000/postitquick/post/5ae40c3a-f9a9-4e1b-b66a-591d4c2871a2/7172eb9e977e58c5435ac06944c9c388.jpg',
+  EXAMPLE_POST_VIEWS: 20,
   EXAMPLE_POST_COMMENTS: 6,
   EXAMPLE_POST_LIKES: 10,
   EXAMPLE_POST_DISLIKES: 2,
