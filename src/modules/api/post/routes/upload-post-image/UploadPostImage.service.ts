@@ -49,7 +49,9 @@ export class UploadPostImageService {
 
     const key = await this.s3.uploadPostImage(user.id, processed_image);
 
-    await this.post_repository.updateImageKey(post.id, key);
+    await this.post_repository.update(post.id, {
+      image_key: key,
+    });
   }
 
   private authorize(user: TRequestUser, target: TPost): void {

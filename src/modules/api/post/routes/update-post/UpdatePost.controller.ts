@@ -4,7 +4,7 @@ import { accessTokenWithAuthorization } from 'modules/api/authorization/decorato
 
 import { postController } from '../../decorators/postController.decorator';
 import { PostIdParamDto } from '../../dto/param/PostIdParam.dto';
-import { UpdatePostDto } from '../../dto/UpdatePost.dto';
+import { UpdatePostContentDto } from '../../dto/UpdatePostContent.dto';
 import { updatePost } from './decorators/updatePost.decorator';
 import { UpdatePostService } from './UpdatePost.service';
 
@@ -19,7 +19,7 @@ export class UpdatePostController {
   async post(
     @Req() { user }: TAuthenticatedRequest,
     @Param() { post_id }: PostIdParamDto,
-    @Body() data: UpdatePostDto,
+    @Body() data: UpdatePostContentDto,
   ): Promise<void> {
     await this.update_post.run(user, post_id, data);
   }

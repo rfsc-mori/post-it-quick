@@ -1,3 +1,5 @@
-import type { TCreatePost } from './createPost.type';
+import type { TPost } from './post.type';
 
-export type TUpdatePost = Pick<TCreatePost, 'title' | 'description'>;
+export type TUpdatePost = Partial<
+  Pick<TPost, 'title' | 'description' | 'image_key'>
+>;
