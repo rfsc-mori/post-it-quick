@@ -34,7 +34,9 @@ export class DeletePostImageService {
       });
     }
 
-    await this.post_repository.updateImageKey(post.id, null);
+    await this.post_repository.update(post.id, {
+      image_key: null,
+    });
   }
 
   private authorize(user: TRequestUser, target: TPost): void {

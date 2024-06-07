@@ -1,6 +1,6 @@
 import { applyDecorators } from '@nestjs/common';
 import {
-  ApiNoContentResponse,
+  ApiCreatedResponse,
   ApiOperation,
   ApiPayloadTooLargeResponse,
 } from '@nestjs/swagger';
@@ -20,7 +20,7 @@ export function uploadPostImage(): MethodDecorator {
       description: IMAGE_ERROR_MESSAGES.FILE_SIZE_TOO_HIGH,
     }),
 
-    ApiNoContentResponse({
+    ApiCreatedResponse({
       description: POST_DESCRIPTION_MESSAGES.UPLOAD_POST_IMAGE_UPDATED,
     }),
   );
