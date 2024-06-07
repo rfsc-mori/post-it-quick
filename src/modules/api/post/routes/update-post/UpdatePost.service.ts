@@ -44,8 +44,8 @@ export class UpdatePostService {
 
     const permissions =
       user.id === target.user_id
-        ? acl_query.deleteOwn(AUTHORIZATION_RESOURCE.POST)
-        : acl_query.deleteAny(AUTHORIZATION_RESOURCE.POST);
+        ? acl_query.updateOwn(AUTHORIZATION_RESOURCE.POST)
+        : acl_query.updateAny(AUTHORIZATION_RESOURCE.POST);
 
     if (!permissions.granted) {
       throw new ForbiddenAction();

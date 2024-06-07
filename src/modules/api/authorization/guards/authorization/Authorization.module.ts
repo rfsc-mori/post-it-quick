@@ -14,6 +14,6 @@ import {
       useValue: AUTHORIZATION_GRANT,
     },
   ],
-  exports: [AuthorizationGrant],
+  exports: [AccessTokenAuthenticationModule, AuthorizationGrant],
 })
 export class AuthorizationModule {}
