@@ -3,6 +3,7 @@ import type { TCreatePost } from 'modules/api/post/types/createPost.type';
 import type { TPost } from 'modules/api/post/types/post.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 
+import { ID_SELECTOR } from '../selector/idSelector';
 import { POST_SELECTOR } from '../selector/post/postSelector';
 
 @Injectable()
@@ -22,6 +23,20 @@ export class PostRepository {
         },
       },
       select: POST_SELECTOR,
+    });
+  }
+
+  async findById(post_id: string): Promise<TPost | null> {
+    return await this.prisma.post.findUnique({
+      where: { id: post_id },
+      select: POST_SELECTOR,
+    });
+  }
+
+  async delete(post_id: string): Promise<void> {
+    await this.prisma.post.delete({
+      where: { id: post_id },
+      select: ID_SELECTOR,
     });
   }
 }
