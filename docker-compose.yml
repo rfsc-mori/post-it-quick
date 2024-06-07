@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  postitquick:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: 'no'
+    init: true
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgres://application:9ia6QDzoCzcbpwRnu5qyrKyzKcxfiMpP@db:5432/postitquick?schema=public
+      - S3_ENDPOINT=http://minio:9000
+      - EMAIL_HOST=mailhog
+    ports:
+      - ${SERVER_PORT:-3000}:${SERVER_PORT:-3000}
+    depends_on:
+      - db
+      - minio
+      - mailhog
+
   db:
     image: postgres@sha256:1bf73ccae25238fa555100080042f0b2f9be08eb757e200fe6afc1fc413a1b3c
     restart: 'no'
