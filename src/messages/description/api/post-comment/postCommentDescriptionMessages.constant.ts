@@ -1,4 +1,7 @@
 export const POST_COMMENT_DESCRIPTION_MESSAGES = {
+  ADD_POST_COMMENT_API: 'Adiciona um comentário à uma postagem.',
+  ADD_POST_COMMENT_CREATED: 'Comentário adicionado com sucesso.',
+
   POST_COMMENT_ID: 'Identificador único do comentário.',
   POST_COMMENT_USER_ID: 'Identificador único do autor do comentário.',
   POST_COMMENT_DESCRIPTION: 'Descrição do comentário.',
