@@ -50,7 +50,7 @@ Você pode encontrar os pacotes utilizados no arquivo [package.json](package.jso
 - NestJS: Framework para desenvolvimento back-end.
 - Prisma: ORM.
 - Bcrypt: Para criptografia de senhas.
-- Password: Para autenticação com email e senha e JWT.
+- Passport: Para autenticação com email e senha e JWT.
 - Swagger: Para documentação da API.
 - Class-Validator/Transformer: Para validação de DTOs.
 - Joi: Para validação de configurações.
