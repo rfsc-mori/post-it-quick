@@ -8,6 +8,9 @@ export const POST_REACTION_DESCRIPTION_MESSAGES = {
   FIND_REACTION_STATS_BY_POST_API: 'Encontra reações a uma postagem.',
   FIND_REACTION_STATS_BY_POST_CREATED: 'Reações encontradas com sucesso.',
 
+  DELETE_POST_REACTION_API: 'Deleta uma reação a uma postagem.',
+  DELETE_POST_REACTION_CREATED: 'Reação deletada com sucesso.',
+
   POST_REACTION_TYPE: 'Tipo da reação ao post.',
   POST_REACTIONS: 'Reações ao post.',
 
