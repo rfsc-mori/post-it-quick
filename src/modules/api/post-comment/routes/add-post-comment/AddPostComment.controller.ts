@@ -14,7 +14,7 @@ import { addPostComment } from './decorators/addPostComment.decorator';
 export class AddPostCommentController {
   constructor(private readonly add_post_comment: AddPostCommentService) {}
 
-  @Post(':post_id')
+  @Post('post/:post_id')
   @addPostComment()
   @authorize(
     {
