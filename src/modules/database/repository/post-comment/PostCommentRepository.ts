@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import type { TCreatePostComment } from 'modules/api/post-comment/types/createPostComment.type';
 import type { TPostComment } from 'modules/api/post-comment/types/postComment.type';
 import type { TPostCommentStats } from 'modules/api/post-comment/types/postCommentStats.type';
+import type { TPostCommentWithUser } from 'modules/api/post-comment/types/postCommentWithUser.type';
 import type { TUpdatePostComment } from 'modules/api/post-comment/types/updatePostComment.type';
 import { PrismaService } from 'modules/database/Prisma.service';
 import { ID_SELECTOR } from 'modules/database/selector/idSelector';
@@ -43,6 +44,38 @@ export class PostCommentRepository {
         deleted_at: null,
       },
       select: POST_COMMENT_SELECTOR,
+    });
+  }
+
+  async findByPostIdWithUser(post_id: string): Promise<TPostCommentWithUser[]> {
+    return await this.prisma.comment.findMany({
+      where: {
+        post_id,
+      },
+      select: {
+        id: true,
+
+        post_id: true,
+        user_id: true,
+
+        description: true,
+
+        created_at: true,
+        updated_at: true,
+
+        user: {
+          select: {
+            id: true,
+            name: true,
+
+            user_profile: {
+              select: {
+                avatar_key: true,
+              },
+            },
+          },
+        },
+      },
     });
   }
 

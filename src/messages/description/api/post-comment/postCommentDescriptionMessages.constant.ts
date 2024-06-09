@@ -8,6 +8,9 @@ export const POST_COMMENT_DESCRIPTION_MESSAGES = {
   DELETE_POST_COMMENT_API: 'Deleta um comentário de uma postagem.',
   DELETE_POST_COMMENT_CREATED: 'Comentário deletado com sucesso.',
 
+  FIND_COMMENT_BY_POST_API: 'Busca todos os comentários de uma postagem.',
+  FIND_COMMENT_BY_POST_CREATED: 'Comentários encontrados com sucesso.',
+
   POST_COMMENT_ID: 'Identificador único do comentário.',
   POST_COMMENT_USER_ID: 'Identificador único do autor do comentário.',
   POST_COMMENT_DESCRIPTION: 'Descrição do comentário.',
