@@ -50,6 +50,20 @@ export class PostReactionRepository {
     }));
   }
 
+  async deleteUserReactionByTypeAndPostId(
+    user_id: string,
+    post_id: string,
+    reaction_type: TReactionType,
+  ): Promise<void> {
+    await this.prisma.postReaction.deleteMany({
+      where: {
+        user_id,
+        post_id,
+        reaction_type,
+      },
+    });
+  }
+
   async getReactionStats(post_id: string): Promise<TPostReactionStats> {
     const raw_stats = await this.prisma.postReaction.groupBy({
       by: ['post_id', 'reaction_type'],
