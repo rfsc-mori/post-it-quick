@@ -5,6 +5,9 @@ export const POST_REACTION_DESCRIPTION_MESSAGES = {
   ADD_POST_REACTION_API: 'Adiciona uma reação a uma postagem.',
   ADD_POST_REACTION_CREATED: 'Reação adicionada com sucesso.',
 
+  FIND_REACTION_STATS_BY_POST_API: 'Encontra reações a uma postagem.',
+  FIND_REACTION_STATS_BY_POST_CREATED: 'Reações encontradas com sucesso.',
+
   POST_REACTION_TYPE: 'Tipo da reação ao post.',
   POST_REACTIONS: 'Reações ao post.',
 
