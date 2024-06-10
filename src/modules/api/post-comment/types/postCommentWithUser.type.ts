@@ -3,8 +3,13 @@ import type { TUserProfile } from 'modules/api/user-profile/types/userProfile.ty
 
 import type { TPostComment } from './postComment.type';
 
+type TUserForComment = Pick<TUser, 'id' | 'name'> & {
+  readonly user_profile?: Pick<TUserProfile, 'avatar_key'> | null;
+};
+
 export type TPostCommentWithUser = TPostComment & {
-  readonly user: Pick<TUser, 'id' | 'name'> & {
-    readonly user_profile?: Pick<TUserProfile, 'avatar_key'> | null;
-  };
+  readonly deleted_at?: Date | null;
+  readonly deleted_by?: string | null;
+
+  readonly user: TUserForComment;
 };

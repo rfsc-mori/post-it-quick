@@ -12,7 +12,7 @@ import type { TPostCommentForListing } from '../types/postCommentForListing.type
 
 type TPostCommentAuthor = TPostCommentForListing['user'];
 
-export class PostCommentAuthorDto implements TPostCommentAuthor {
+class PostCommentAuthorDto implements NonNullable<TPostCommentAuthor> {
   @userName()
   readonly name: string;
 
@@ -28,7 +28,7 @@ export class PostCommentForListingDto implements TPostCommentForListing {
   readonly post_id: string;
 
   @postCommentUserId()
-  readonly user_id: string;
+  readonly user_id?: string | null;
 
   @postCommentDescription()
   readonly description: string;
@@ -40,5 +40,5 @@ export class PostCommentForListingDto implements TPostCommentForListing {
   readonly updated_at: Date;
 
   @postAuthor()
-  readonly user: PostCommentAuthorDto;
+  readonly user?: PostCommentAuthorDto | null;
 }

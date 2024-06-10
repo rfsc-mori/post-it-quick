@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PostNotFoundException } from 'exceptions/api/post/PostNotFound.exception';
+import { POST_COMMENT_DESCRIPTION_MESSAGES } from 'messages/description/api/post-comment/postCommentDescriptionMessages.constant';
 import { PostRepository } from 'modules/database/repository/post/PostRepository';
 import { PostCommentRepository } from 'modules/database/repository/post-comment/PostCommentRepository';
 import { S3Service } from 'modules/s3/S3.service';
@@ -24,14 +25,38 @@ export class FindCommentsByPostService {
     const comments_with_user =
       await this.post_comment_repository.findByPostIdWithUser(target_id);
 
-    return comments_with_user.map((comment) => ({
-      ...comment,
-      user: {
-        name: comment.user.name,
-        avatar_url: comment.user.user_profile?.avatar_key
-          ? this.s3_service.makePublicURL(comment.user.user_profile.avatar_key)
-          : null,
-      },
-    }));
+    return comments_with_user.map((comment) => {
+      let actual_description = comment.description;
+
+      if (comment.deleted_by === comment.user_id) {
+        actual_description =
+          POST_COMMENT_DESCRIPTION_MESSAGES.DELETED_BY_COMMENT_AUTHOR;
+      } else if (comment.deleted_by === post.user_id) {
+        actual_description =
+          POST_COMMENT_DESCRIPTION_MESSAGES.DELETED_BY_POST_AUTHOR;
+      } else if (comment.deleted_by !== null || comment.deleted_at !== null) {
+        actual_description =
+          POST_COMMENT_DESCRIPTION_MESSAGES.DELETED_BY_SYSTEM;
+      }
+
+      return {
+        id: comment.id,
+        post_id: comment.post_id,
+        user_id: comment.deleted_at ? null : comment.user_id,
+        description: actual_description,
+        created_at: comment.created_at,
+        updated_at: comment.updated_at,
+        user: comment.deleted_at
+          ? null
+          : {
+              name: comment.user.name,
+              avatar_url: comment.user.user_profile?.avatar_key
+                ? this.s3_service.makePublicURL(
+                    comment.user.user_profile.avatar_key,
+                  )
+                : null,
+            },
+      };
+    });
   }
 }
