@@ -48,7 +48,7 @@ async function bootstrap(): Promise<void> {
     `${app_config.name} inicado em: ${app_config.server.address}:${app_config.server.port}`,
   );
 
-  await app.listen(3000);
+  await app.listen(3000, app_config.server.address);
 }
 
 void bootstrap();
