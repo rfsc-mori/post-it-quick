@@ -3,16 +3,14 @@ import type { ConfigType } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
-import appConfigInstance from 'config/app.config';
+import appConfig from 'config/app.config';
 
 import { AppModule } from './App.module';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
 
-  const app_config = app.get<ConfigType<typeof appConfigInstance>>(
-    appConfigInstance.KEY,
-  );
+  const app_config = app.get<ConfigType<typeof appConfig>>(appConfig.KEY);
 
   app.enableShutdownHooks();
 
