@@ -3,6 +3,10 @@ import type { TUserWithProfile } from 'modules/api/user/types/userWithProfile.ty
 
 import type { TPostComment } from './postComment.type';
 
-export type TPostCommentForListing = TPostComment & {
-  readonly user: Pick<TUser, 'name'> & Pick<TUserWithProfile, 'avatar_url'>;
+type TUserForCommentForListing = Pick<TUser, 'name'> &
+  Pick<TUserWithProfile, 'avatar_url'>;
+
+export type TPostCommentForListing = Omit<TPostComment, 'user_id'> & {
+  readonly user_id?: string | null;
+  readonly user?: TUserForCommentForListing | null;
 };

@@ -63,6 +63,9 @@ export class PostCommentRepository {
         created_at: true,
         updated_at: true,
 
+        deleted_at: true,
+        deleted_by: true,
+
         user: {
           select: {
             id: true,

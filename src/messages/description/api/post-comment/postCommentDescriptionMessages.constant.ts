@@ -23,4 +23,8 @@ export const POST_COMMENT_DESCRIPTION_MESSAGES = {
   EXAMPLE_POST_COMMENT_DESCRIPTION: 'Este é um comentário em uma postagem.',
   EXAMPLE_POST_COMMENT_CREATED_AT: '2024-06-05T00:00:00.000Z',
   EXAMPLE_POST_COMMENT_UPDATED_AT: '2024-06-07T00:00:00.000Z',
+
+  DELETED_BY_POST_AUTHOR: '[Comentário removido pelo autor da postagem.]',
+  DELETED_BY_COMMENT_AUTHOR: '[Comentário removido pelo autor do comentário.]',
+  DELETED_BY_SYSTEM: '[Comentário removido.]',
 } as const;
